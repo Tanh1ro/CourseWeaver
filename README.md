@@ -1,119 +1,198 @@
 # CourseWeaver : AI-Powered Course Design Assistant
 
-🧠 Overview
-Curriculate is an AI-powered tool that helps educators design high-quality courses aligned with Bloom’s Taxonomy. It leverages Google’s Gemini LLM to:
+🧠 **Overview**
+CourseWeaver is an AI-powered tool that helps educators design high-quality courses aligned with Bloom's Taxonomy. It leverages Google's Gemini LLM to:
 
-Sanity-check learning outcomes.
+- **Generate complete course syllabi** with modules, outcomes, labs, and textbooks
+- **Evaluate existing course documents** for quality and completeness
+- **Check learning outcomes** for Bloom's taxonomy alignment
+- **Recommend textbooks and resources** based on subject and audience
 
-Generate syllabi based on course parameters.
+Built with a modern full-stack architecture: React frontend, FastAPI backend, and MongoDB database.
 
-Suggest practical lab work.
+## 🛠️ Tech Stack
 
-Evaluate course documents and recommend textbooks.
+| Layer | Technology |
+|-------|------------|
+| **Frontend** | React.js + Tailwind CSS |
+| **Backend** | Python FastAPI |
+| **Database** | MongoDB (PyMongo) |
+| **AI Engine** | Google Gemini Flash API |
+| **File Upload** | Python-docx + PyPDF2 |
+| **Styling** | Tailwind CSS |
 
-Built with a MERN stack frontend, Gemini handles the intelligent back-end processing.
+## 🚀 Features
 
-🛠️ Tech Stack
-Layer	Technology
-Frontend	React.js (MERN)
-Backend	Node.js + Express
-Database	MongoDB (Mongoose)
-AI Engine	Gemini (Google PaLM API)
-File Upload	Multer (for PDF/docx)
-Styling	Tailwind / Bootstrap
+### 📚 **Course Builder**
+Auto-generates complete course syllabi including:
+- 5 detailed modules with hours and descriptions
+- 4 measurable learning outcomes with Bloom's taxonomy levels
+- 5-6 lab/tutorial activities mapped to modules
+- 3 recommended textbooks and 3 online references
 
-🚀 Features
-🔍 Outcome Sanity Checker — Tags learning outcomes using Bloom’s levels and suggests improvements.
+### 🔍 **Course Evaluator**
+Upload and analyze existing course documents:
+- Supports .docx and .pdf file formats
+- Comprehensive quality analysis with scoring
+- Identifies strengths, weaknesses, and missing elements
+- Provides specific improvement recommendations
 
-🧱 Course Builder — Auto-generates weekly course plans, outcomes, and labs.
+### 🎯 **Outcome Quality Checker**
+Analyze individual learning outcomes:
+- Bloom's taxonomy level detection
+- Quality scoring (1-10 scale)
+- Strengths and weaknesses analysis
+- Suggested improvements with enhanced versions
 
-🧪 Lab Designer — Practical activities aligned to the course content.
+### 📖 **Book Recommender**
+Get tailored resource recommendations:
+- Subject and audience-based suggestions
+- Textbooks with authors, years, and suitability notes
+- Online resources with descriptions and types
 
-📄 Syllabus Evaluator — Analyzes uploaded syllabi for quality and completeness.
+## 📦 Project Structure
 
-📚 Textbook Recommender — Suggests references based on course and audience.
-
-📦 Project Structure
-bash
-Copy
-Edit
-curriculate/
+```
+courseweaver/
 │
 ├── client/                  # React frontend
-│   └── src/
-│       ├── components/
-│       ├── pages/
-│       └── App.js
+│   ├── src/
+│   │   ├── pages/          # React components
+│   │   │   ├── CourseBuilder.js
+│   │   │   ├── CourseEvaluator.js
+│   │   │   ├── BookRecommender.js
+│   │   │   └── CourseOutcomeChecker.js
+│   │   ├── App.js
+│   │   └── index.css
+│   ├── package.json
+│   └── tailwind.config.js
 │
-├── server/                  # Node.js backend
-│   ├── routes/
-│   ├── controllers/
-│   └── services/
-│       └── geminiService.js
+├── server/                  # FastAPI backend
+│   ├── routes/             # API endpoints
+│   │   ├── course_routes.py
+│   │   ├── syllabus_routes.py
+│   │   ├── outcome_routes.py
+│   │   └── book_routes.py
+│   ├── services/           # AI services
+│   │   └── gemini_service.py
+│   ├── controllers/        # Business logic
+│   ├── main.py            # FastAPI app
+│   ├── database.py        # MongoDB connection
+│   └── requirements.txt
 │
-├── uploads/                 # Syllabus uploads
-├── .env
-├── package.json
+├── uploads/                # Syllabus file uploads
+├── package.json           # Root package.json
 └── README.md
-📄 .env (example)
-env
-Copy
-Edit
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/curriculate
+```
+
+## 🔧 Environment Setup
+
+### Backend (.env)
+```env
+MONGODB_URI=mongodb://localhost:27017/courseweaver
 GEMINI_API_KEY=your_gemini_api_key
-🧪 Run Locally
-1. Clone the repository
-bash
-Copy
-Edit
-git clone https://github.com/yourusername/curriculate.git
-cd curriculate
-2. Start the Backend
-bash
-Copy
-Edit
+DATABASE_NAME=courseweaver
+```
+
+## 🚀 Quick Start
+
+### 1. Clone and Install
+```bash
+git clone <repository-url>
+cd courseweaver
+npm run install-all
+```
+
+### 2. Backend Setup
+```bash
 cd server
-npm install
-npm run dev
-3. Start the Frontend
-bash
-Copy
-Edit
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # or venv\Scripts\activate on Windows
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Set up environment variables
+cp .env.example .env
+# Edit .env with your MongoDB URI and Gemini API key
+
+# Start FastAPI server
+uvicorn main:app --reload
+```
+
+### 3. Frontend Setup
+```bash
 cd client
 npm install
 npm start
-App runs on http://localhost:3000
+```
 
-🔁 API Endpoints
-Endpoint	Method	Description
-/api/check-outcome	POST	Checks learning outcome quality
-/api/generate-course	POST	Creates syllabus from user input
-/api/upload-syllabus	POST	Upload and evaluate syllabus
-/api/get-books	POST	Recommends textbooks
+### 4. Access the Application
+- Frontend: http://localhost:3000
+- Backend API: http://localhost:8000
+- API Docs: http://localhost:8000/docs
 
-📋 Example Input (Course Builder)
-json
-Copy
-Edit
+## 🔁 API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/generate-course` | POST | Generate complete course syllabus |
+| `/api/check-outcome` | POST | Analyze learning outcome quality |
+| `/api/upload-syllabus` | POST | Upload and evaluate course document |
+| `/api/get-books` | POST | Recommend textbooks and resources |
+
+## 📋 Example Usage
+
+### Course Builder Input
+```json
 {
-  "title": "Data Analytics",
+  "title": "Mobile Application Development",
   "credits": "3",
   "ltp": "2:0:2",
-  "audience": "B.Sc Statistics"
+  "audience": "B.Tech Computer Science students"
 }
-🔮 Future Features
-User login / saved courses
+```
 
-Export to PDF/Word
+### Course Evaluator Input
+Upload a .docx or .pdf file (like CS3330.docx) and get:
+- Overall quality score (1-10)
+- Completeness analysis
+- Bloom's taxonomy alignment
+- Specific improvement recommendations
 
-Multi-language support
+## 🧠 AI Integration
 
-Integration with Google Classroom / Moodle
+The application uses Google Gemini Flash API for:
+- **Course Generation**: Creates structured syllabi with educational best practices
+- **Outcome Analysis**: Evaluates learning outcomes against Bloom's taxonomy
+- **Document Analysis**: Comprehensive syllabus evaluation and improvement suggestions
+- **Resource Recommendation**: Context-aware textbook and online resource suggestions
 
-🙌 Contributing
-Contributions are welcome! Please fork the repo and make a pull request. For feature requests or bug reports, open an issue.
+## 🔮 Future Features
 
-📜 License
-MIT License © 2025 Curriculate Team
+- [ ] User authentication and course saving
+- [ ] Export to PDF/Word formats
+- [ ] Integration with Moodle/Google Classroom
+- [ ] Multi-language support
+- [ ] Advanced analytics and reporting
+- [ ] Collaborative course design features
+
+## 🤝 Contributing
+
+Contributions are welcome! Please:
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+For feature requests or bug reports, please open an issue.
+
+## 📜 License
+
+MIT License © 2025 CourseWeaver Team
+
+---
+
+**Built with ❤️ for educators worldwide**
 
