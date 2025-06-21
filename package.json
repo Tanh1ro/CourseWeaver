@@ -11,10 +11,19 @@
     "build": "cd client && npm run build",
     "start": "cd server && npm start"
   },
-  "keywords": ["education", "ai", "course-design", "gemini"],
+  "keywords": [
+    "education",
+    "ai",
+    "course-design",
+    "gemini"
+  ],
   "author": "CourseWeaver Team",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "react-router-dom": "^7.6.2",
+    "web-vitals": "^5.0.3"
   }
-} 
+}
