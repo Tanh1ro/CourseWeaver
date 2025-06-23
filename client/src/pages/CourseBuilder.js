@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
+import API_ENDPOINTS from "../config";
 
 const initialForm = {
   title: "",
@@ -26,7 +27,7 @@ export default function CourseBuilder() {
     setError(null);
     setResult(null);
     try {
-      const res = await fetch("/api/generate-course", {
+      const res = await fetch(API_ENDPOINTS.GENERATE_COURSE, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)

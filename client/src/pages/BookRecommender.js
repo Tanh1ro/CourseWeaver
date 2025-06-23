@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import API_ENDPOINTS from "../config";
 
 const initialForm = {
   subject: "",
@@ -21,7 +22,7 @@ export default function BookRecommender() {
     setError(null);
     setResult(null);
     try {
-      const res = await fetch("/api/get-books", {
+      const res = await fetch(API_ENDPOINTS.GET_BOOKS, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)

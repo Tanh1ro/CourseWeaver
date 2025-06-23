@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import API_ENDPOINTS from "../config";
 
 export default function CourseOutcomeChecker() {
   const [outcome, setOutcome] = useState("");
@@ -12,7 +13,7 @@ export default function CourseOutcomeChecker() {
     setError(null);
     setResult(null);
     try {
-      const res = await fetch("/api/check-outcome", {
+      const res = await fetch(API_ENDPOINTS.CHECK_OUTCOME, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ outcome })

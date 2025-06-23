@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import API_ENDPOINTS from "../config";
 
 export default function CourseEvaluator() {
   const [file, setFile] = useState(null);
@@ -19,7 +20,7 @@ export default function CourseEvaluator() {
     const formData = new FormData();
     formData.append("file", file);
     try {
-      const res = await fetch("/api/upload-syllabus", {
+      const res = await fetch(API_ENDPOINTS.UPLOAD_SYLLABUS, {
         method: "POST",
         body: formData
       });

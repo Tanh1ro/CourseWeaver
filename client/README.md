@@ -26,9 +26,19 @@
 
 # Deploying to Vercel
 
-To deploy this app on Vercel:
+## Prerequisites
+1. Deploy your backend to Railway (see server/README.md)
+2. Get your Railway deployment URL
+
+## Frontend Deployment
 1. Go to https://vercel.com/import
 2. Select your GitHub repository (CourseWeaver)
 3. Set the project root to the `client` folder
 4. Use the default build command (`npm run build`) and output directory (`build`)
-5. Click Deploy 
+5. Add environment variable:
+   - Name: `REACT_APP_API_URL`
+   - Value: Your Railway backend URL (e.g., `https://your-app.railway.app`)
+6. Click Deploy
+
+## Environment Variables
+- `REACT_APP_API_URL`: Your backend API URL (required for production) 
