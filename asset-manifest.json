@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/CourseWeaver/static/css/main.1b292724.css",
+    "main.js": "/CourseWeaver/static/js/main.024e6a97.js",
+    "static/js/213.dc701bfb.chunk.js": "/CourseWeaver/static/js/213.dc701bfb.chunk.js",
+    "static/js/455.16fd9b6e.chunk.js": "/CourseWeaver/static/js/455.16fd9b6e.chunk.js",
+    "static/js/453.46dc3e92.chunk.js": "/CourseWeaver/static/js/453.46dc3e92.chunk.js",
+    "service-worker.js": "/CourseWeaver/service-worker.js",
+    "index.html": "/CourseWeaver/index.html",
+    "main.1b292724.css.map": "/CourseWeaver/static/css/main.1b292724.css.map",
+    "main.024e6a97.js.map": "/CourseWeaver/static/js/main.024e6a97.js.map",
+    "213.dc701bfb.chunk.js.map": "/CourseWeaver/static/js/213.dc701bfb.chunk.js.map",
+    "455.16fd9b6e.chunk.js.map": "/CourseWeaver/static/js/455.16fd9b6e.chunk.js.map",
+    "453.46dc3e92.chunk.js.map": "/CourseWeaver/static/js/453.46dc3e92.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1b292724.css",
+    "static/js/main.024e6a97.js"
+  ]
+}
