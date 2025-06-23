@@ -1,36 +1,28 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import CourseBuilder from "./pages/CourseBuilder";
 import CourseEvaluator from "./pages/CourseEvaluator";
-import BookRecommender from "./pages/BookRecommender";
 import CourseOutcomeChecker from "./pages/CourseOutcomeChecker";
+import BookRecommender from "./pages/BookRecommender";
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
 
-function App() {
+export default function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
-        <header className="bg-blue-700 text-white p-4 shadow">
-          <div className="container mx-auto flex justify-between items-center">
-            <h1 className="text-2xl font-bold tracking-tight">CourseWeaver</h1>
-            <nav className="space-x-4">
-              <Link to="/" className="hover:underline">Course Builder</Link>
-              <Link to="/evaluator" className="hover:underline">Evaluator</Link>
-              <Link to="/books" className="hover:underline">Book Recommender</Link>
-              <Link to="/outcome-checker" className="hover:underline">Outcome Checker</Link>
-            </nav>
-          </div>
-        </header>
-        <main className="container mx-auto py-8">
+      <div className="flex flex-col min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 text-white">
+        <Navbar />
+        <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<CourseBuilder />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/course-builder" element={<CourseBuilder />} />
             <Route path="/evaluator" element={<CourseEvaluator />} />
-            <Route path="/books" element={<BookRecommender />} />
+            <Route path="/book-recommender" element={<BookRecommender />} />
             <Route path="/outcome-checker" element={<CourseOutcomeChecker />} />
           </Routes>
         </main>
+        <Footer />
       </div>
     </Router>
   );
 }
-
-export default App;
